@@ -73,6 +73,10 @@ echo -e "\n Checking for any senstive keys/infromation using XKeys"
 
 cat /root/Projects/$domain/All_Urls.txt | xkeys -o /root/Projects/$domain/ | grep -v "Nothing!" | anew /root/Projects/$domain/Xkeys_output.txt
 
+echo -e "\n Checking for HTTP Smuggling"
+
+cat sorted_subdomain.txt | httprobe| python3 /root/el_cazador/tool_personal/smuggler/smuggler.py -q | anew /root/Projects/$domain/HTTP_Smuggling.txt 
+
 
 
 
