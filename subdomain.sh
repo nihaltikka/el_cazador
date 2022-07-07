@@ -43,44 +43,58 @@ amass enum -passive -d $1 -o /root/Projects/$domain/amass_subdomains.txt
 
 echo -e "\n Getting domains Sorted into sorted_subdomain.txt"
 
-cat /root/Projects/$domain/subdomains.txt /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt /root/Projects/$domain/findomain_subdomains.txt | sort -u > /root/Projects/$domain/sorted_subdomain.txt
+cat /root/Projects/$domain/subdomains.txt /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt /root/Projects/$domain/findomain_subdomains.txt| httprobe | sort -u > /root/Projects/$domain/sorted_subdomain.txt
 
 echo -e "\n Getting all live domains into live_domains.txt"
 
-cat /root/Projects/$domain/sorted_subdomain.txt | httprobe | anew /root/Projects/$domain/live_domains.txt
+cat /root/Projects/$domain/sorted_subdomain.txt | httpx | anew /root/Projects/$domain/live_domains.txt
 
 echo -e "\n Getting all URLS using waybackurls"
 
 cat /root/Projects/$domain/sorted_subdomain.txt | waybackurls | sort -u > /root/Projects/$domain/All_Urls.txt
 
+echo -e "\n Getting all live URLS"
+
+cat /root/Projects/$domain/All_Urls.txt | httpx | tee -a /root/Projects/$domain/live_urls.txt
+
+
 echo -e "\n Getting parameter_urls"
 
-cat /root/Projects/$domain/All_Urls.txt | grep "=" | anew /root/Projects/$domain/parameter_urls.txt
+cat /root/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
+
+
+echo -e "\n Place All Parameter URLS into parameter_urls.txt"
+
+cat /root/Projects/$domain/Parameters/* | sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters
+
 
 echo "Getting openredir_urls"
 
-cat /root/Projects/$domain/All_Urls.txt | grep "=http" | anew /root/Projects/$domain/openredir_urls.txt
+cat /root/Projects/$domain/All_Urls.txt | grep "=http"| anew /root/Projects/$domain/openredir_urls.txt
 
-echo -e "\n Getting all live URLS"
-
-cat /root/Projects/$domain/All_Urls.txt | httprobe | tee -a /root/Projects/$domain/live_urls.txt
 
 echo -e "\n Checking for Subdomain Takeover"
 
 subzy --targets /root/Projects/$domain/sorted_subdomain.txt -concurrency 20 --hide_fails | anew /root/Projects/$domain/subdomain_takeover.txt
 
-echo -e "\n Checking for any senstive keys/infromation using XKeys"
+
+echo -e "\n Checking for any sensitive keys/information using XKeys"
 
 cat /root/Projects/$domain/All_Urls.txt | xkeys -o /root/Projects/$domain/ | grep -v "Nothing!" | anew /root/Projects/$domain/Xkeys_output.txt
 
+
 echo -e "\n Checking for HTTP Smuggling"
 
-cat sorted_subdomain.txt | httprobe| python3 /root/el_cazador/tool_personal/smuggler/smuggler.py -q | anew /root/Projects/$domain/HTTP_Smuggling.txt 
+cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/el_cazador/tool_personal/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
 
 
+echo -e "\n Checking for LFI"
+
+cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/OWNSECLIST/LFI.txt ; done
 
 
+echo -e "\n Checking for SQLI"
 
-
+gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
 
 
