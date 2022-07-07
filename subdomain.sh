@@ -65,7 +65,9 @@ cat /root/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 /root/Tools
 
 echo -e "\n Place All Parameter URLS into parameter_urls.txt"
 
-cat /root/Projects/$domain/Parameters/* | sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters
+cat /root/Projects/$domain/Parameters/* | tee  /root/Projects/$domain/parameter_urls.txt
+
+cat /root/Projects/$domain/param_urls.txt | sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters | rm -rf /root/Projects/$domain/param_urls.txt
 
 
 echo "Getting openredir_urls"
