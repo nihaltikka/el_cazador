@@ -85,7 +85,7 @@ cat /root/Projects/$domain/All_Urls.txt | xkeys -o /root/Projects/$domain/ | gre
 
 echo -e "\n Checking for HTTP Smuggling"
 
-cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/el_cazador/tool_personal/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
+cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/el_cazador/tools/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
 
 
 echo -e "\n Checking for LFI"
