@@ -11,6 +11,9 @@
 # Happy Hunting
 ########################################
 
+sudo apt install sysvbanner 
+
+banner el cazador
 
 domain=$1
 
