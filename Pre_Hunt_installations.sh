@@ -14,6 +14,7 @@ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
 git clone https://github.com/six2dez/reconftw
 cd reconftw/
+chmod +x install.sh
 ./install.sh
 
 
