@@ -4,10 +4,12 @@ Subdomain Enumeration Automate, URLs, Parameter URLs, Open Redirect, Subdomain T
 
 This tool is to automate your recon/bugbounty process.
 
-Installation:
+# Installation:
 
 git clone https://github.com/nihaltikka/el_cazador.git
+
 ./Pre_Hunt_installations.sh
+
 ./elcazador.sh target.com
 
 Note : Still working to add more tools and recon process into this bash tool.
