@@ -1,3 +1,7 @@
+#!/bin/bash
+sudo apt-get -y update
+sudo apt-get -y upgrade
+
 git clone https://github.com/YashGoti/crtsh.git
 
 
@@ -30,3 +34,5 @@ go get -u github.com/vsec7/xkeys
 apt-get install sqlmap
 
 go get -u -v github.com/lukasikic/subzy
+
+mkdir Projects
