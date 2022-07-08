@@ -19,7 +19,7 @@ mkdir -p /root/Projects/$domain/
 
 echo "Getting domains from crtsh"
 
-python3 /root/crtsh.py/crtsh -d $1 | anew /root/Projects/$domain/subdomains.txt
+python3 /root/crtsh/crtsh.py -d $1 | anew /root/Projects/$domain/subdomains.txt
 
 echo -e "\n Getting domains from subfinder"
 
@@ -31,7 +31,7 @@ assetfinder -subs-only $1 |grep -v "*." | anew /root/Projects/$domain/subdomains
 
 echo -e "\n Getting domains from findomain"
 
-findomain -t $1  -u  /root/Projects/$domain/findomain_subdomains.txt
+./findomain-linux -t $1  -u  /root/Projects/$domain/findomain_subdomains.txt
 
 echo -e "\n Getting domains from Sublist3r"
 
