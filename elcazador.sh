@@ -11,7 +11,7 @@
 # Happy Hunting
 ########################################
 
-sudo apt install sysvbanner 
+sudo apt install -y sysvbanner 
 
 banner el cazador
 
