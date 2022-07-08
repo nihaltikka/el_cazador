@@ -87,12 +87,12 @@ cat /root/Projects/$domain/All_Urls.txt | xkeys -o /root/Projects/$domain/ | gre
 
 echo -e "\n Checking for HTTP Smuggling"
 
-cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/el_cazador/tools/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
+cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
 
 
 echo -e "\n Checking for LFI"
 
-cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/OWNSECLIST/LFI.txt ; done
+cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/LFI.txt ; done
 
 
 echo -e "\n Checking for SQLI"
