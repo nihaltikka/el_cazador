@@ -2,10 +2,12 @@
 Subdomain Enumeration Automate, URLs, Parameter URLs, Open Redirect, Subdomain Takeover check, Sensitive Data Checks on URLs.
 
 
-This tool is to automate your process.
+This tool is to automate your recon/bugbounty process.
 
-To Use this First run ./Pre_Hunt_installations.sh
+Installation:
 
-Now run subdomain.sh as shown below 
+git clone https://github.com/nihaltikka/el_cazador.git
+./Pre_Hunt_installations.sh
+./elcazador.sh target.com
 
-./subdomain.sh target.com
+Note : Still working to add more tools and recon process into this bash tool
