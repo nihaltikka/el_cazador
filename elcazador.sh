@@ -73,7 +73,7 @@ cat /root/Projects/$domain/param_urls.txt | sort -u > /root/Projects/$domain/par
 
 echo "Getting openredir_urls"
 
-cat /root/Projects/$domain/All_Urls.txt | grep "=http"| anew /root/Projects/$domain/openredir_urls.txt
+cat /root/Projects/$domain/All_Urls.txt | grep -f ~/el_cazador/open_redirect_template.txt | anew /root/Projects/$domain/openredir_urls.txt
 
 
 echo -e "\n Checking for Subdomain Takeover"
@@ -93,7 +93,7 @@ cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/s
 
 echo -e "\n Checking for LFI"
 
-cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/LFI.txt ; done
+cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/LFI.txt ; done
 
 
 echo -e "\n Checking for SQLI"
