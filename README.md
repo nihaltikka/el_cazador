@@ -2,7 +2,7 @@
 Subdomain Enumeration Automate, URLs, Parameter URLs, Open Redirect, Subdomain Takeover check, Sensitive Data Checks on URLs.
 
 
-This tool is to automate your recon/bugbounty process.
+This tool is to automate your Recon process.
 
 # Installation:
 
