@@ -6,10 +6,17 @@ This tool is to automate your recon/bugbounty process.
 
 # Installation:
 
+Believing this is being ran on root user.
+
 git clone https://github.com/nihaltikka/el_cazador.git
+
+mv ~/el_cazador/Pre_Hunt_installations.sh ~
+mv ~/el_cazador/recon.sh ~
 
 1) ./Pre_Hunt_installations.sh
 
 2) ./recon.sh target.com
 
-#Note : Still working to add more tools and recon process into this bash tool.
+
+
+Note : Still working to add more tools and recon process into this bash tool.
