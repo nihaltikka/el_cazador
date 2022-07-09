@@ -8,8 +8,8 @@ This tool is to automate your recon/bugbounty process.
 
 git clone https://github.com/nihaltikka/el_cazador.git
 
-./Pre_Hunt_installations.sh
+1) ./Pre_Hunt_installations.sh
 
-./elcazador.sh target.com
+2) ./recon.sh target.com
 
-Note : Still working to add more tools and recon process into this bash tool.
+#Note : Still working to add more tools and recon process into this bash tool.
