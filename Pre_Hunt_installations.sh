@@ -1,5 +1,5 @@
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt -y update
+sudo apt -y upgrade
 sudo apt install -y git
 sudo apt install -y golang
 sudo apt install -y sysvbanner
