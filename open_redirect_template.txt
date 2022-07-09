@@ -1,10 +1,8 @@
 ?url=
 ?rurl
-?u
 ?next
 ?link
 ?lnk
-go
 ?target=
 ?dest=
 ?destination=
@@ -26,4 +24,5 @@ location
 /out?
 ?go=
 ?return=
+/cgi-bin/redirect.cgi?
 
