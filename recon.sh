@@ -102,4 +102,4 @@ gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --d
 
 echo -e "\n Checking Nuclei Results"
 
-nuclei -l /root/Projects/$domain/sorted_subdomain.txt -v -o /root/Projects/$domain/nuclei_result.txt
+nuclei -l /root/Projects/$domain/sorted_subdomain.txt -ut -v -o /root/Projects/$domain/nuclei_result.txt
