@@ -100,4 +100,6 @@ echo -e "\n Checking for SQLI"
 
 gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
 
+echo -e "\n Checking Nuclei Results"
 
+nuclei -l /root/Projects/$domain/sorted_subdomain.txt -v -o /root/Projects/$domain/nuclei_result.txt
