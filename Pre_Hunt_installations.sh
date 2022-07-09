@@ -1,6 +1,7 @@
-#!/bin/bash
 sudo apt-get -y update
 sudo apt-get -y upgrade
+sudo apt install git -y
+sudo apt install golang -y
 
 git clone https://github.com/YashGoti/crtsh.git
 
