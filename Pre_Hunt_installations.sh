@@ -1,7 +1,8 @@
 sudo apt-get -y update
 sudo apt-get -y upgrade
-sudo apt install git -y
-sudo apt install golang -y
+sudo apt install -y git
+sudo apt install -y golang
+sudo apt install -y sysvbanner
 
 git clone https://github.com/YashGoti/crtsh.git
 
