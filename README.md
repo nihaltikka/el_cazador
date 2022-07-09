@@ -1,5 +1,5 @@
 # el_cazador
-Subdomain Enumeration Automate, URLs, Parameter URLs, Open Redirect, Subdomain Takeover check, Sensitive Data Checks on URLs.
+Subdomain Enumeration Automate, URLs, Parameter URLs, Open Redirect, Subdomain Takeover check, Sensitive Data Checks on URLs, HTTP Smuggling, LFI & SQLi.
 
 
 This tool is to automate your Recon process.
