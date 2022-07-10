@@ -11,8 +11,11 @@ Believing this is being ran on root user.
 git clone https://github.com/nihaltikka/el_cazador.git
 
 chmod +x Pre_Hunt_installations.sh recon.sh
+
 sed -i -e 's/\r$//' Pre_Hunt_installations.sh
+
 mv ~/el_cazador/Pre_Hunt_installations.sh ~
+
 mv ~/el_cazador/recon.sh ~
 
 1) ./Pre_Hunt_installations.sh
