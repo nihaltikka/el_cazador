@@ -61,22 +61,22 @@ cat /root/Projects/$domain/All_Urls.txt | httpx | tee -a /root/Projects/$domain/
 
 echo -e "\n Getting parameter_urls"
 
-cat /root/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
+cat /root/Projects/$domain/subdomains.txt  /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt /root/Projects/$domain/findomain_subdomains.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
 
 
 echo -e "\n Place All Parameter URLS into parameter_urls.txt and live_parameter_urls.txt"
 
 cat /root/Projects/$domain/Parameters/* | tee  /root/Projects/$domain/param_urls.txt
 
-cat /root/Projects/$domain/param_urls.txt | httprobe| sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters | rm -rf /root/Projects/$domain/param_urls.txt
+cat /root/Projects/$domain/param_urls.txt | sort -u | tee /root/Projects/$domain/unique_param_urls.txt | rm -rf /root/Projects/$domain/Parameters 
 
-cat /root/Projects/$domain/parameter_urls.txt | httpx | anew /root/Projects/$domain/live_parameter_urls.txt
+cat /root/Projects/$domain/param_urls.txt | httpx | anew /root/Projects/$domain/live_param_urls.txt |rm -rf /root/Projects/$domain/param_urls.txt
+
 
 
 echo "Getting openredir_urls"
 
-cat /root/Projects/$domain/All_Urls.txt | grep -f ~/el_cazador/open_redirect_template.txt | anew /root/Projects/$domain/openredir_urls.txt
-
+cat /root/Projects/$domain/All_Urls.txt  /root/Projects/$domain/parameter_urls.txt  |grep -e url= -e rurl= -e ?next -e ?link -e ?lnk -e ?target= -e ?dest= -e ?destination= -e ?redir -e ?redirect_uri -e ?redirect_url -e /redirect/ -e ?view= -e ?login -e ?to= -e ?image_url= -e ?return= -e ?returnTo= -e ?return_to= -e ?continue= -e ?return_path= -e path= -e location= -e /out/ -e /out? -e ?go= -e ?return= -e /cgi-bin/redirect.cgi?|tee -a /root/Projects/$domain/openredir_urls.txt
 
 echo -e "\n Checking for Subdomain Takeover"
 
