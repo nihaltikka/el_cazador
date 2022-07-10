@@ -64,11 +64,13 @@ echo -e "\n Getting parameter_urls"
 cat /root/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
 
 
-echo -e "\n Place All Parameter URLS into parameter_urls.txt"
+echo -e "\n Place All Parameter URLS into parameter_urls.txt and live_parameter_urls.txt"
 
-cat /root/Projects/$domain/Parameters/* | tee  /root/Projects/$domain/parameter_urls.txt
+cat /root/Projects/$domain/Parameters/* | tee  /root/Projects/$domain/param_urls.txt
 
-cat /root/Projects/$domain/param_urls.txt | sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters | rm -rf /root/Projects/$domain/param_urls.txt
+cat /root/Projects/$domain/param_urls.txt | httprobe| sort -u > /root/Projects/$domain/parameter_urls.txt | rm -rf /root/Projects/$domain/Parameters | rm -rf /root/Projects/$domain/param_urls.txt
+
+cat /root/Projects/$domain/parameter_urls.txt | httpx | anew /root/Projects/$domain/live_parameter_urls.txt
 
 
 echo "Getting openredir_urls"
