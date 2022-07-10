@@ -50,7 +50,7 @@ echo -e "\n Installing/Upgrading ParamSpider"
 git clone https://github.com/devanshbatham/ParamSpider
 pip3 install -r /root/ParamSpider/requirements.txt 
 mv /root/ParamSpider /root/Tools/
-echo -e "\n Installing/Upgrading smuggler
+echo -e "\n Installing/Upgrading smuggler"
 git clone https://github.com/defparam/smuggler.git
 mv /root/smuggler /root/Tools
 echo -e "\n Installing/Upgrading XKeys"
