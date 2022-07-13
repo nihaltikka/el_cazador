@@ -76,7 +76,7 @@ cat /root/Projects/$domain/param_urls.txt | httpx | anew /root/Projects/$domain/
 
 echo "Getting openredir_urls"
 
-cat /root/Projects/$domain/All_Urls.txt  /root/Projects/$domain/parameter_urls.txt  |grep -e url= -e rurl= -e ?next -e ?link -e ?lnk -e ?target= -e ?dest= -e ?destination= -e ?redir -e ?redirect_uri -e ?redirect_url -e /redirect/ -e ?view= -e ?login -e ?to= -e ?image_url= -e ?return= -e ?returnTo= -e ?return_to= -e ?continue= -e ?return_path= -e path= -e location= -e /out/ -e /out? -e ?go= -e ?return= -e /cgi-bin/redirect.cgi?|tee -a /root/Projects/$domain/openredir_urls.txt
+cat /root/Projects/$domain/All_Urls.txt  /root/Projects/$domain/parameter_urls.txt  |egrep -e url= -e rurl= -e ?next -e ?link -e ?lnk -e ?target= -e ?dest= -e ?destination= -e ?redir -e ?redirect_uri -e ?redirect_url -e /redirect/ -e ?view= -e ?login -e ?to= -e ?image_url= -e ?return= -e ?returnTo= -e ?return_to= -e ?continue= -e ?return_path= -e path= -e location= -e /out/ -e /out? -e ?go= -e ?return= -e /cgi-bin/redirect.cgi?|tee -a /root/Projects/$domain/openredir_urls.txt
 
 echo -e "\n Checking for Subdomain Takeover"
 
@@ -98,10 +98,10 @@ echo -e "\n Checking for LFI"
 cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/LFI.txt ; done
 
 
-echo -e "\n Checking for SQLI"
+#echo -e "\n Checking for SQLI"
 
-gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
+#gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
 
 echo -e "\n Checking Nuclei Results"
 
-nuclei -l /root/Projects/$domain/sorted_subdomain.txt -ut -v -o /root/Projects/$domain/nuclei_result.txt
+nuclei -l /root/Projects/$domain/sorted_subdomain.txt -o /root/Projects/$domain/nuclei_result.txt
