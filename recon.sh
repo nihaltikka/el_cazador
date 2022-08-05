@@ -92,14 +92,14 @@ echo -e "\n Checking for HTTP Smuggling"
 cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/smuggler/smuggler.py | anew /root/Projects/$domain/HTTP_smuggling.txt
 
 
-echo -e "\n Checking for LFI"
+#echo -e "\n Checking for LFI"
 
-cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/LFI.txt ; done
+#cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/LFI.txt ; done
 
 
-#echo -e "\n Checking for SQLI"
+echo -e "\n Checking for SQLI"
 
-#gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
+gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
 
 echo -e "\n Checking Nuclei Results"
 
