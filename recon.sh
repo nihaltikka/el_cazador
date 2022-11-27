@@ -61,7 +61,7 @@ cat /root/Projects/$domain/All_Urls.txt | httpx | tee -a /root/Projects/$domain/
 
 echo -e "\n Getting parameter_urls"
 
-cat /root/Projects/$domain/subdomains.txt  /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt /root/Projects/$domain/findomain_subdomains.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
+cat /root/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 /root/Tools/ParamSpider/paramspider.py -l high --exclude php,svg,jpg,png,jpeg,css,woff,woff2,tif,tiff,gif,ico,pdf,txt,js -o /root/Projects/$domain/Parameters/% -d%;
 
 
 echo -e "\n Place All Parameter URLS into parameter_urls.txt and Live_parameter_urls.txt"
@@ -104,3 +104,7 @@ gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --d
 echo -e "\n Checking Nuclei Results"
 
 nuclei -l /root/Projects/$domain/sorted_subdomain.txt -o /root/Projects/$domain/nuclei_result.txt
+
+#echo -e "\n Checking for GitHub Dorks"
+
+#python3  /root/el_cazador/GitDorker/GitDorker.py -t  "Add Your GitHub Token"  -org $domain -d  /root/el_cazador/gitdork.txt  -o  /root/Projects/$domain/githubdork.txt
