@@ -59,3 +59,4 @@ echo -e "\n Installing/Upgrading subzy"
 go install -v github.com/lukasikic/subzy@latest
 go install github.com/hahwul/dalfox/v2@latest
 go get github.com/Emoe/kxss
+go install -v github.com/tomnomnom/gf@latest
