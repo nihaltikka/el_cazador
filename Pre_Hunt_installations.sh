@@ -54,6 +54,8 @@ echo -e "\n Installing/Upgrading smuggler"
 git clone https://github.com/defparam/smuggler.git
 mv /root/smuggler /root/Tools
 echo -e "\n Installing/Upgrading XKeys"
-go get -u github.com/vsec7/xkeys
+go install -v  github.com/vsec7/xkeys@latest
 echo -e "\n Installing/Upgrading subzy"
-go get -u -v github.com/lukasikic/subzy
+go install -v github.com/lukasikic/subzy@latest
+go install github.com/hahwul/dalfox/v2@latest
+go get github.com/Emoe/kxss
