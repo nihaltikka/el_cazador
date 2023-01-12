@@ -24,4 +24,19 @@ mv ~/el_cazador/recon.sh ~
 
 
 
+Extra issue solvers.
+
+1 -- export GOROOT=/usr/local/go
+     export GOPATH=$HOME/go
+     export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+     
+     Run above 3 lines if go tools are not working directly on terminal from anywhere
+   
+2 -- To update Nuclei 
+
+      $nuclie -update  (For Nuclie Update)
+      $nuclie -ut      (For Template update)
+
+
+
 Note : Still working to add more tools and recon process into this bash tool.
