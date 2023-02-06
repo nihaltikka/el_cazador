@@ -8,33 +8,33 @@ This tool is to automate your Recon process.
 
 Believing this is being ran on root user.
 
-$git clone https://github.com/nihaltikka/el_cazador.git
+git clone https://github.com/nihaltikka/el_cazador.git
 
-$chmod +x Pre_Hunt_installations.sh recon.sh
+chmod +x Pre_Hunt_installations.sh recon.sh
 
-$sed -i -e 's/\r$//' Pre_Hunt_installations.sh
+sed -i -e 's/\r$//' Pre_Hunt_installations.sh
 
-$mv ~/el_cazador/Pre_Hunt_installations.sh ~
+mv ~/el_cazador/Pre_Hunt_installations.sh ~
 
-$mv ~/el_cazador/recon.sh ~
+mv ~/el_cazador/recon.sh ~
 
      $./Pre_Hunt_installations.sh
 
      $./recon.sh target.com
 
 
-#Config Updation
+# Config Updation
 
 1) Update the GitHub token into your recon.sh
 2) Update blind xss domain to find XSS 
 
 
 
-Extra issue solvers.
+# Extra issue solvers.
 
-1 -- $export GOROOT=/usr/local/go
-     $export GOPATH=$HOME/go
-     $export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+1 -- export GOROOT=/usr/local/go
+     export GOPATH=$HOME/go
+     export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
      
      Run above 3 lines if go tools are not working directly on terminal from anywhere
    
@@ -45,4 +45,6 @@ Extra issue solvers.
 
 
 
-Note : Still working to add more tools and recon process into this bash tool.
+# Note 
+
+Still working to add more tools and recon process into this bash tool.
