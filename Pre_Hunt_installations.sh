@@ -60,3 +60,4 @@ go install -v github.com/lukasikic/subzy@latest
 go install github.com/hahwul/dalfox/v2@latest
 go get github.com/Emoe/kxss
 go install -v github.com/tomnomnom/gf@latest
+git clone https://github.com/maurosoria/dirsearch.git --depth 1
