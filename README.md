@@ -8,19 +8,19 @@ This tool is to automate your Recon process.
 
 Believing this is being ran on root user.
 
-git clone https://github.com/nihaltikka/el_cazador.git
+$git clone https://github.com/nihaltikka/el_cazador.git
 
-chmod +x Pre_Hunt_installations.sh recon.sh
+$chmod +x Pre_Hunt_installations.sh recon.sh
 
-sed -i -e 's/\r$//' Pre_Hunt_installations.sh
+$sed -i -e 's/\r$//' Pre_Hunt_installations.sh
 
-mv ~/el_cazador/Pre_Hunt_installations.sh ~
+$mv ~/el_cazador/Pre_Hunt_installations.sh ~
 
-mv ~/el_cazador/recon.sh ~
+$mv ~/el_cazador/recon.sh ~
 
-1) ./Pre_Hunt_installations.sh
+     $./Pre_Hunt_installations.sh
 
-2) ./recon.sh target.com
+     $./recon.sh target.com
 
 
 #Config Updation
@@ -32,9 +32,9 @@ mv ~/el_cazador/recon.sh ~
 
 Extra issue solvers.
 
-1 -- export GOROOT=/usr/local/go
-     export GOPATH=$HOME/go
-     export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+1 -- $export GOROOT=/usr/local/go
+     $export GOPATH=$HOME/go
+     $export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
      
      Run above 3 lines if go tools are not working directly on terminal from anywhere
    
