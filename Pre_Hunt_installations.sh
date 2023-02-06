@@ -16,13 +16,17 @@ sudo apt-get install wget
 sudo apt install wget
 echo -e "\n Installing/Upgrading sqlmap"
 apt-get install sqlmap
+echo -e "\n Installing/Upgrading Rust"
+curl https://sh.rustup.rs -sSf | sh
 mkdir Projects
 mkdir Tools
 echo -e "\n Installing/Upgrading crtsh"
 git clone https://github.com/YashGoti/crtsh.git
 echo -e "\n Installing/Upgrading findomain"
-wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
-chmod +x findomain-linux
+git clone https://github.com/Edu4rdSHL/findomain.git
+cd findomain
+cargo build –release
+sudo cp target/release/findomain /usr/bin/
 echo -e "\n Installing/Upgrading anew"
 go install -v github.com/tomnomnom/anew@latest
 echo -e "\n Installing/Upgrading httprobe"
@@ -57,7 +61,13 @@ echo -e "\n Installing/Upgrading XKeys"
 go install -v  github.com/vsec7/xkeys@latest
 echo -e "\n Installing/Upgrading subzy"
 go install -v github.com/lukasikic/subzy@latest
+echo -e "\n Installing/Upgrading Dalfox"
 go install github.com/hahwul/dalfox/v2@latest
-go get github.com/Emoe/kxss
+echo -e "\n Installing/Upgrading Kxss"
+go install github.com/Emoe/kxss@latest
+echo -e "\n Installing/Upgrading gf"
 go install -v github.com/tomnomnom/gf@latest
+echo -e "\n Installing/Upgrading DirSearch"
 git clone https://github.com/maurosoria/dirsearch.git --depth 1
+echo -e "\n Installing/Upgrading Notify"
+go install -v github.com/projectdiscovery/notify/cmd/notify@latest
