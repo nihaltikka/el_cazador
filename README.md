@@ -23,6 +23,12 @@ mv ~/el_cazador/recon.sh ~
 2) ./recon.sh target.com
 
 
+#Config Updation
+
+1) Update the GitHub token into your recon.sh
+2) Update blind xss domain to find XSS 
+
+
 
 Extra issue solvers.
 
