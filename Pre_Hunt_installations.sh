@@ -9,6 +9,8 @@ echo -e "\n Installing/Upgrading Python"
 sudo apt-get install  python3
 echo -e "\n Installing/Upgrading golang"
 sudo apt install  golang
+echo -e "\n Installing NMap"
+sudo apt install nmap
 echo -e "\n Installing/Upgrading banner"
 sudo apt install  sysvbanner
 echo -e "\n Installing/Upgrading wget"
@@ -60,7 +62,7 @@ mv /root/smuggler /root/Tools
 echo -e "\n Installing/Upgrading XKeys"
 go install -v  github.com/vsec7/xkeys@latest
 echo -e "\n Installing/Upgrading subzy"
-go install -v github.com/lukasikic/subzy@latest
+go install -v github.com/LukaSikic/subzy@latest
 echo -e "\n Installing/Upgrading Dalfox"
 go install github.com/hahwul/dalfox/v2@latest
 echo -e "\n Installing/Upgrading Kxss"
