@@ -73,3 +73,8 @@ echo -e "\n Installing/Upgrading DirSearch"
 git clone https://github.com/maurosoria/dirsearch.git --depth 1
 echo -e "\n Installing/Upgrading Notify"
 go install -v github.com/projectdiscovery/notify/cmd/notify@latest
+echo -e "\n Installing/Upgrading GitDorker"
+git clone https://github.com/obheda12/GitDorker.git
+mv GitDorker  /root/el_cazador/GitDorker
+cd GitDorker
+pip3 install -r /root/el_cazador/GitDorker/requirements.txt 
