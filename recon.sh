@@ -123,4 +123,4 @@ nuclei -l /root/Projects/$domain/sorted_subdomain.txt -o /root/Projects/$domain/
 
 echo -e "\n Checking for GitHub Dorks"
 
-python3  /root/el_cazador/GitDorker/GitDorker.py -t  "Add Your GitHub Token"  -org $domain -d  /root/el_cazador/gitdork.txt  -o  /root/Projects/$domain/githubdork.txt
+python3  /root/el_cazador/GitDorker/GitDorker.py -t  "Add Your GitHub Token"  -org $domain -d  /root/el_cazador/githubdork.txt  -o  /root/Projects/$domain/githubdork.txt
