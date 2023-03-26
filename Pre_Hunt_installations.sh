@@ -26,11 +26,10 @@ mkdir Tools
 echo -e "\n Installing/Upgrading crtsh"
 git clone https://github.com/YashGoti/crtsh.git
 echo -e "\n Installing/Upgrading findomain"
-git clone https://github.com/Edu4rdSHL/findomain.git
-cd findomain
-cargo build –-release
-sudo cp target/release/findomain /usr/bin/
-cd
+curl -LO https://github.com/findomain/findomain/releases/latest/download/findomain-linux.zip
+unzip findomain-linux.zip
+chmod +x findomain
+sudo mv findomain /usr/bin/findomain
 echo -e "\n Installing/Upgrading anew"
 go install -v github.com/tomnomnom/anew@latest
 echo -e "\n Installing/Upgrading httprobe"
