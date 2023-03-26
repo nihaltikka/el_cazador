@@ -29,6 +29,7 @@ git clone https://github.com/Edu4rdSHL/findomain.git
 cd findomain
 cargo build –release
 sudo cp target/release/findomain /usr/bin/
+cd
 echo -e "\n Installing/Upgrading anew"
 go install -v github.com/tomnomnom/anew@latest
 echo -e "\n Installing/Upgrading httprobe"
@@ -47,7 +48,7 @@ echo -e "\n Installing/Upgrading Nuclei"
 go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 echo -e "\n Installing/Upgrading nuclei-templates"
 git clone https://github.com/projectdiscovery/nuclei-templates.git
-nuclei update-templates
+nuclei -ut
 echo -e "\n Installing/Upgrading naabu"
 go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 echo -e "\n Installing/Upgrading Sublist3r"
@@ -55,10 +56,10 @@ git clone https://github.com/aboul3la/Sublist3r.git
 echo -e "\n Installing/Upgrading ParamSpider"
 git clone https://github.com/devanshbatham/ParamSpider
 pip3 install -r /root/ParamSpider/requirements.txt 
-mv /root/ParamSpider /root/Tools/
+mv ~/ParamSpider ~/Tools/
 echo -e "\n Installing/Upgrading smuggler"
 git clone https://github.com/defparam/smuggler.git
-mv /root/smuggler /root/Tools
+mv ~/smuggler ~/Tools
 echo -e "\n Installing/Upgrading XKeys"
 go install -v  github.com/vsec7/xkeys@latest
 echo -e "\n Installing/Upgrading subzy"
@@ -75,6 +76,6 @@ echo -e "\n Installing/Upgrading Notify"
 go install -v github.com/projectdiscovery/notify/cmd/notify@latest
 echo -e "\n Installing/Upgrading GitDorker"
 git clone https://github.com/obheda12/GitDorker.git
-mv GitDorker  /root/el_cazador/GitDorker
-cd GitDorker
-pip3 install -r /root/el_cazador/GitDorker/requirements.txt 
+mv GitDorker  ~/el_cazador/GitDorker
+cd ~/el_cazador/GitDorker
+pip3 install -r ~/el_cazador/GitDorker/requirements.txt 
