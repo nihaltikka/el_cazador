@@ -20,6 +20,7 @@ echo -e "\n Installing/Upgrading sqlmap"
 apt-get install sqlmap
 echo -e "\n Installing/Upgrading Rust"
 curl https://sh.rustup.rs -sSf | sh
+source "$HOME/.cargo/env"
 mkdir Projects
 mkdir Tools
 echo -e "\n Installing/Upgrading crtsh"
@@ -27,7 +28,7 @@ git clone https://github.com/YashGoti/crtsh.git
 echo -e "\n Installing/Upgrading findomain"
 git clone https://github.com/Edu4rdSHL/findomain.git
 cd findomain
-cargo build –release
+cargo build –-release
 sudo cp target/release/findomain /usr/bin/
 cd
 echo -e "\n Installing/Upgrading anew"
