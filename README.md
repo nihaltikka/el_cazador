@@ -27,6 +27,7 @@ mv ~/el_cazador/recon.sh ~
 
 1) Update the GitHub token into your recon.sh
 2) Update blind xss domain to find XSS 
+3) Configure Notify at $HOME/.config/notify/provider-config.yaml
 
 
 
