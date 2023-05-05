@@ -79,3 +79,5 @@ git clone https://github.com/obheda12/GitDorker.git
 mv GitDorker  ~/el_cazador/GitDorker
 cd ~/el_cazador/GitDorker
 pip3 install -r ~/el_cazador/GitDorker/requirements.txt 
+go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+pip3 install uro --user
