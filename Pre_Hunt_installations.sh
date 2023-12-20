@@ -49,6 +49,7 @@ go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 echo -e "\n Installing/Upgrading nuclei-templates"
 git clone https://github.com/projectdiscovery/nuclei-templates.git
 nuclei -ut
+sudo apt install -y libpcap-dev
 echo -e "\n Installing/Upgrading naabu"
 go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 echo -e "\n Installing/Upgrading Sublist3r"
