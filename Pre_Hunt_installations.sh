@@ -1,23 +1,23 @@
 #!/bin/bash
 echo -e "\n Looking for System Update"
-sudo apt -y update
+apt -y update
 echo -e "\n Looking for System Upgrade"
-sudo apt -y upgrade
+apt -y upgrade
 echo -e "\n Installing/Upgrading Git"
-sudo apt install  git
+apt install  git
 echo -e "\n Installing/Upgrading Python"
-sudo apt-get install  python3
+apt-get install  python3
 echo -e "\n Installing/Upgrading golang"
-sudo apt install  golang
+apt install  golang
 echo -e "\n Installing NMap"
-sudo apt install nmap
+apt install nmap
 echo -e "\n Installing/Upgrading banner"
-sudo apt install  sysvbanner
+apt install  sysvbanner
 echo -e "\n Installing/Upgrading wget"
-sudo apt-get install wget
-sudo apt install wget
+apt-get install wget
+apt install wget
 echo -e "\n Installing/Upgrading sqlmap"
-apt-get install sqlmap
+apt install sqlmap
 echo -e "\n Installing/Upgrading Rust"
 curl https://sh.rustup.rs -sSf | sh
 source "$HOME/.cargo/env"
@@ -32,6 +32,8 @@ chmod +x findomain
 sudo mv findomain /usr/bin/findomain
 echo -e "\n Installing/Upgrading anew"
 go install -v github.com/tomnomnom/anew@latest
+echo -e "\n Installing/Upgrading Amass"
+go install -v github.com/owasp-amass/amass/v4/...@master
 echo -e "\n Installing/Upgrading httprobe"
 go install github.com/tomnomnom/httprobe@latest
 echo -e "\n Installing/Upgrading assetfinder"
@@ -49,7 +51,7 @@ go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 echo -e "\n Installing/Upgrading nuclei-templates"
 git clone https://github.com/projectdiscovery/nuclei-templates.git
 nuclei -ut
-sudo apt install -y libpcap-dev
+apt install -y libpcap-dev
 echo -e "\n Installing/Upgrading naabu"
 go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 echo -e "\n Installing/Upgrading Sublist3r"
